@@ -2,10 +2,11 @@ from game.console import Console
 from game.seeker import Seeker
 from game.hider import Hider
 
+
 class Director:
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
-    
+
     Stereotype:
         Controller
 
@@ -18,7 +19,7 @@ class Director:
 
     def __init__(self):
         """The class constructor.
-        
+
         Args:
             self (Director): an instance of Director.
         """
@@ -26,10 +27,10 @@ class Director:
         self.seeker = Seeker()
         self.keep_playing = True
         self.hider = Hider()
-        
+
     def start_game(self):
         """Starts the game loop to control the sequence of play.
-        
+
         Args:
             self (Director): an instance of Director.
         """
@@ -49,7 +50,7 @@ class Director:
         self.console.write(message)
         location = self.console.read_number("Enter a location [1-1000]: ")
         self.seeker.move(location)
-        
+
     def do_updates(self):
         """Updates the important game information for each round of play. In 
         this case, that means the hider watches the seeker.
@@ -58,7 +59,7 @@ class Director:
             self (Director): An instance of Director.
         """
         self.hider.watch(self.seeker.location)
-        
+
     def do_outputs(self):
         """Outputs the important game information for each round of play. In 
         this case, that means the hider provides a hint.
